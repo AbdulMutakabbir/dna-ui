@@ -1,25 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import AppBar from '@mui/material/AppBar';
+import { Toolbar, Typography } from '@material-ui/core';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from './components/login/Login';
+import ProtectedRoutes from './utils/ProtectedRoutes';
+import Page404 from './pages/Page404';
+import PageHome from './pages/PageHome';
+import PageLanding from './pages/PageLanding';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+    <BrowserRouter>
+      <AppBar position="static">
+        <Toolbar>
+          {/* <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+            <MenuIcon />
+        </IconButton> */}
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Carleton ITS
+          </Typography>
+          {/* <Button color="inherit">Login</Button> */}
+        </Toolbar>
+      </AppBar>
+      <Routes>
+        <Route path="*" element={<Page404 />} />
+        <Route exact path="/" element={<PageLanding/>} />
+        <Route exact path="/login" element={<Login />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route exact path="/home" element={<PageHome />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
+
 }
 
 export default App;
