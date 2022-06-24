@@ -7,6 +7,8 @@ import TextField from '@mui/material/TextField';
 import { InputAdornment, IconButton } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { encode } from 'base-64';
+import axios from 'axios';
 
 const Login = (props) => {
 
@@ -22,6 +24,38 @@ const Login = (props) => {
 
     const navigate = useNavigate();
 
+
+    const onLogin = () => {
+        setIsLoggingin(defaultIsLoggingin);
+        var credentials = username + ":" + password;
+        var encodedString = encode(credentials);
+
+        var data = JSON.stringify({
+            "encoded_auth": encodedString
+        });
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8000/api/auth',
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            data: data
+        };
+
+        axios(config)
+            .then(function (response) {
+                navigate('/home');
+                setIsLoggingin(defaultIsLoggingin)
+            })
+            .catch(function (error) {
+                setIsLoggingin(defaultIsLoggingin)
+                console.log(error);
+            });
+    }
+
     return (
         <div>
             <Grid container padding={5}>
@@ -32,6 +66,7 @@ const Login = (props) => {
                             label="Username"
                             variant="outlined"
                             fullWidth={true}
+                            onChange={(event) => { setUsername(event.target.value) }}
                         />
                     </Grid>
                 </Grid>
@@ -47,14 +82,14 @@ const Login = (props) => {
                             fullWidth={true}
                             InputProps={{
                                 endAdornment: <InputAdornment position="end">
-                                    <IconButton 
-                                        onClick={()=>{setShowPassword(!showPassword)}}
+                                    <IconButton
+                                        onClick={() => { setShowPassword(!showPassword) }}
                                     >
                                         {showPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </InputAdornment>
                             }}
-                            onChange={(event)=>{setPassword(event.target.value)}}
+                            onChange={(event) => { setPassword(event.target.value) }}
                         />
                     </Grid>
                 </Grid>
@@ -68,11 +103,10 @@ const Login = (props) => {
                             fullWidth={true}
                             color="primary"
                             variant="outlined"
-                            onClick={() => { 
+                            onClick={() => {
                                 setIsLoggingin(!isLoggingin);
-                                auth.login(()=>{
-                                    setIsLoggingin(defaultIsLoggingin);
-                                    navigate('/home');
+                                auth.login(() => {
+                                    onLogin()
                                 })
                             }}
                         >
