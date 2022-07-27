@@ -1,0 +1,65 @@
+.processedContainer {
+    overflow: scroll;
+    max-height: 26rem;
+}
+
+.config-preview{
+    max-height: 13.25rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-radius: 4px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border: none;
+}
+
+.react-json-view{
+    height: 14rem;
+    overflow: scroll;
+    border-radius: 4px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border: none;
+}
+
+.css-y7h5yl {
+    height: 12rem !important
+}
+
+.css-1b70ia6 {
+    width: inherit;
+    min-height: 14rem !important;
+}
+
+.css-17bnq6l {
+    height: 2rem;
+}
+
+.css-pq0067 {
+    height: 2rem;
+}
+
+.react-dropdown-tree-select .dropdown .dropdown-trigger.arrow {
+    border-radius: 4px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border: none;
+    width: 100%;
+    min-height: 2.5rem;
+}
+
+.react-dropdown-tree-select .dropdown {
+    width: 100%;
+}
+
+.react-dropdown-tree-select {
+    width: 100%;
+}
+
+.tag {
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+}
+
+.tag-remove{
+    align-self: center;
+}
+

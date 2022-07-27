@@ -1,6 +1,7 @@
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import ConfigIP from '../components/conig_ip/ConfigIP';
+import ConfigIP from '../components/ConfigIp/ConfigIP';
+import SwitchFilter from '../components/SwitchFilter/SwitchFilter';
 
 
 function TabPanel(props) {
@@ -43,7 +44,7 @@ const PageHome = (props) => {
             <Box mx={2} mt={3} sx={{ border: 1, borderColor: 'divider'}}>
                 <Tabs value={homePageTab} onChange={handleHomeTabChange} aria-label="tabs-home">
                     <Tab label="DNAC" {...setTabAttributes(0)} />
-                    <Tab label="Future Project  1" {...setTabAttributes(1)} />
+                    <Tab label="Switch Filter" {...setTabAttributes(1)} />
                     <Tab label="Future Project 2" {...setTabAttributes(2)} />
                 </Tabs>
             </Box>
@@ -52,7 +53,7 @@ const PageHome = (props) => {
                     <ConfigIP/>
                 </TabPanel>
                 <TabPanel value={homePageTab} index={1}>
-                    Bonjure! wil see you soon here...
+                    <SwitchFilter/>
                 </TabPanel>
                 <TabPanel value={homePageTab} index={2}>
                     Hello! wil see you soon here...

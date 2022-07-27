@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  ui:
+    build: .
+    restart: always
+    image: dna-ui
+    container_name: dna-ui
+    volumes:
+      - .:/app/
+    ports:
+      - "3000:3000"
+    entrypoint: npm start 
